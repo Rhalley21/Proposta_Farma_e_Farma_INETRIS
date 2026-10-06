@@ -97,7 +97,7 @@
 
   /* ===== COVER ===== */
   #cover{
-    min-height:0; padding:0; display:block; position:relative; overflow:hidden;
+    min-height:0; padding:84px 40px; display:block; position:relative; overflow:hidden;
     background:#0a1a30; border-bottom:none;
   }
   .cover-bg{
@@ -109,10 +109,11 @@
     position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
     width:900px; max-width:85vw; height:auto; opacity:0.10; pointer-events:none; z-index:0;
   }
-  .cover-top{position:relative; z-index:1; max-width:1800px; margin:0 auto; width:100%;}
+  .cover-top{position:relative; z-index:1; max-width:1180px; margin:0 auto; width:100%;}
   .cover-band{
     display:grid; grid-template-columns:1.3548fr 1.7224fr; gap:4px;
-    width:100%; max-width:1800px; margin:0 auto;
+    width:100%; margin:0 auto; border-radius:12px; overflow:hidden;
+    box-shadow:0 26px 70px rgba(0,0,0,0.5);
   }
   .cover-slice{
     width:100%; background:url('capa-farma.png') no-repeat; background-size:100% auto;
@@ -263,7 +264,7 @@
 
   @media (max-width: 1080px){
     #investimento .section-head{padding:0 26px;}
-    #cover{padding:0;}
+    #cover{padding:56px 24px;}
     .cover-title{font-size:40px;}
     section{padding:100px 26px 70px;}
     .navlinks{gap:14px;}
@@ -289,6 +290,7 @@
     .eyebrow .seal{width:28px; height:28px; font-size:9px;}
 
     #cover{padding:0;}
+    .cover-band{border-radius:0; box-shadow:none;}
     .cover-watermark{width:340px; max-width:85vw; opacity:0.08;}
     .cover-title{font-size:28px;}
     .cover-attrib{font-size:12px;}
