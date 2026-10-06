@@ -109,14 +109,16 @@
     position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
     width:900px; max-width:85vw; height:auto; opacity:0.10; pointer-events:none; z-index:0;
   }
-  .cover-top{position:relative; z-index:1; max-width:1500px; margin:0 auto; width:100%;}
-  .cover-image{
-    display:block; width:100%; max-width:none; margin:0 auto; border-radius:0; box-shadow:none;
-    height:calc(100vh - 64px); min-height:520px; max-height:980px;
-    object-fit:cover; object-position:center 28%;
-    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
-            mask-image:linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+  .cover-top{position:relative; z-index:1; max-width:1800px; margin:0 auto; width:100%;}
+  .cover-band{
+    display:grid; grid-template-columns:1.3548fr 1.7224fr; gap:4px;
+    width:100%; max-width:1800px; margin:0 auto;
   }
+  .cover-slice{
+    width:100%; background:url('capa-farma.png') no-repeat; background-size:100% auto;
+  }
+  .cover-slice.a{padding-bottom:73.81%; background-position:0 0;}
+  .cover-slice.b{padding-bottom:58.06%; background-position:0 100%;}
   .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
   #cover .eyebrow{color:rgba(255,255,255,0.85);}
   .cover-title{font-size:62px; max-width:1150px; color:#FFFFFF; margin-top:18px;}
@@ -262,8 +264,6 @@
   @media (max-width: 1080px){
     #investimento .section-head{padding:0 26px;}
     #cover{padding:0;}
-    .cover-top{max-width:680px;}
-    .cover-image{height:auto; min-height:0; max-height:none; object-fit:contain; -webkit-mask-image:none; mask-image:none;}
     .cover-title{font-size:40px;}
     section{padding:100px 26px 70px;}
     .navlinks{gap:14px;}
@@ -331,6 +331,7 @@
   @media (max-width: 900px){
     #investimento{padding:92px 0 0;}
     .inv-band{grid-template-columns:1fr; gap:0; max-width:640px;}
+    .cover-band{grid-template-columns:1fr; gap:0; max-width:640px;}
   }
   @media (max-width: 640px){
     #investimento .section-head{padding:0 18px;}
@@ -388,7 +389,10 @@
     <div class="cover-bg" aria-hidden="true"></div>
     <div class="cover-top">
       <h1 class="sr-only">Mentoria Gestão de Pessoas — Mentoria individual para Maria — Farma e Farma × INETRIS</h1>
-      <img class="cover-image" src="capa-farma.png" alt="Mentoria Gestão de Pessoas. Mentoria individual para Maria. Inetris — saúde é o nosso propósito. Pessoas fortes constroem resultados juntas.">
+      <div class="cover-band" role="img" aria-label="Mentoria Gestão de Pessoas. Mentoria individual para Maria. Inetris — saúde é o nosso propósito. Pessoas fortes constroem resultados juntas.">
+        <div class="cover-slice a" aria-hidden="true"></div>
+        <div class="cover-slice b" aria-hidden="true"></div>
+      </div>
     </div>
   </section>
 
