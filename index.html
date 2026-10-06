@@ -95,31 +95,30 @@
   .section-lede{max-width:680px; color:var(--ink-muted); font-size:15.5px; line-height:1.65; margin-top:14px;}
   .content{max-width:1320px; margin:0 auto; width:100%;}
 
-  /* ===== COVER ===== */
+  /* ===== COVER (hero em duas colunas) ===== */
   #cover{
-    min-height:0; padding:84px 40px; display:block; position:relative; overflow:hidden;
-    background:#0a1a30; border-bottom:none;
+    min-height:calc(100vh - 64px); padding:56px 60px; display:flex; align-items:center;
+    position:relative; overflow:hidden; border-bottom:none;
+    background:linear-gradient(135deg, var(--red-dark), var(--red));
   }
-  .cover-bg{
-    position:absolute; inset:-60px; z-index:0;
-    background:url('capa-farma.png') center/cover no-repeat;
-    filter:blur(38px) brightness(0.62) saturate(1.1);
+  .hero-grid{
+    position:relative; z-index:1; width:100%; max-width:1360px; margin:0 auto;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:72px; align-items:center;
   }
-  .cover-watermark{
-    position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
-    width:900px; max-width:85vw; height:auto; opacity:0.10; pointer-events:none; z-index:0;
+  .hero-copy .lead{font-size:18px; line-height:1.65; color:rgba(255,255,255,0.9); max-width:580px; margin-top:26px;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;}
+  .btn{display:inline-block; padding:14px 26px; border-radius:100px; font-weight:800; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; transition:transform .2s, background .2s;}
+  .btn-solid{background:#FFFFFF; color:var(--red-dark);}
+  .btn-solid:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.6); color:#FFFFFF;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.14);}
+  .hero-copy .meta-grid{margin-top:44px; gap:40px;}
+  .hero-art{display:flex; justify-content:center;}
+  .hero-art img{
+    display:block; width:auto; height:auto; max-width:100%;
+    max-height:min(calc(100vh - 64px - 112px), 820px);
+    border-radius:14px; box-shadow:0 28px 70px rgba(0,0,0,0.45);
   }
-  .cover-top{position:relative; z-index:1; max-width:1180px; margin:0 auto; width:100%;}
-  .cover-band{
-    display:grid; grid-template-columns:1.3548fr 1.7224fr; gap:4px;
-    width:100%; margin:0 auto; border-radius:12px; overflow:hidden;
-    box-shadow:0 26px 70px rgba(0,0,0,0.5);
-  }
-  .cover-slice{
-    width:100%; background:url('capa-farma.png') no-repeat; background-size:100% auto;
-  }
-  .cover-slice.a{padding-bottom:73.81%; background-position:0 0;}
-  .cover-slice.b{padding-bottom:58.06%; background-position:0 100%;}
   .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
   #cover .eyebrow{color:rgba(255,255,255,0.85);}
   .cover-title{font-size:62px; max-width:1150px; color:#FFFFFF; margin-top:18px;}
@@ -264,7 +263,10 @@
 
   @media (max-width: 1080px){
     #investimento .section-head{padding:0 26px;}
-    #cover{padding:56px 24px;}
+    #cover{min-height:0; padding:40px 26px 56px;}
+    .hero-grid{grid-template-columns:1fr; gap:34px;}
+    .hero-art{order:-1;}
+    .hero-art img{max-height:none; width:100%; max-width:460px;}
     .cover-title{font-size:40px;}
     section{padding:100px 26px 70px;}
     .navlinks{gap:14px;}
@@ -289,8 +291,12 @@
     .eyebrow{font-size:10px; gap:10px;}
     .eyebrow .seal{width:28px; height:28px; font-size:9px;}
 
-    #cover{padding:0;}
-    .cover-band{border-radius:0; box-shadow:none;}
+    #cover{padding:26px 18px 44px;}
+    .hero-art img{max-width:100%; border-radius:12px;}
+    .hero-copy .lead{font-size:15px; margin-top:20px;}
+    .hero-actions{margin-top:26px;}
+    .btn{padding:12px 20px; font-size:12px;}
+    .hero-copy .meta-grid{margin-top:34px; gap:22px;}
     .cover-watermark{width:340px; max-width:85vw; opacity:0.08;}
     .cover-title{font-size:28px;}
     .cover-attrib{font-size:12px;}
@@ -333,7 +339,6 @@
   @media (max-width: 900px){
     #investimento{padding:92px 0 0;}
     .inv-band{grid-template-columns:1fr; gap:0; max-width:640px;}
-    .cover-band{grid-template-columns:1fr; gap:0; max-width:640px;}
   }
   @media (max-width: 640px){
     #investimento .section-head{padding:0 18px;}
@@ -388,12 +393,26 @@
 
   <!-- PARTE 1 — CAPA -->
   <section id="cover">
-    <div class="cover-bg" aria-hidden="true"></div>
-    <div class="cover-top">
-      <h1 class="sr-only">Mentoria Gestão de Pessoas — Mentoria individual para Maria — Farma e Farma × INETRIS</h1>
-      <div class="cover-band" role="img" aria-label="Mentoria Gestão de Pessoas. Mentoria individual para Maria. Inetris — saúde é o nosso propósito. Pessoas fortes constroem resultados juntas.">
-        <div class="cover-slice a" aria-hidden="true"></div>
-        <div class="cover-slice b" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">PROPOSTA DE MENTORIA · GESTÃO DE PESSOAS</div>
+        <h1 class="cover-title display">FARMA E FARMA X<span class="line2">INETRIS</span></h1>
+        <p class="lead">Esta proposta não entrega uma lista de treinamentos — entrega um processo de transformação da liderança, acompanhado na prática.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#quem-somos">Ver a proposta</a>
+          <a class="btn btn-ghost" href="#investimento">Investimento</a>
+        </div>
+
+        <div class="meta-grid">
+          <div><div class="meta-label">Duração</div><div class="meta-value">6 meses</div></div>
+          <div><div class="meta-label">Encontros</div><div class="meta-value">2 por mês · 1 online + 1 presencial</div></div>
+          <div><div class="meta-label">Modalidade</div><div class="meta-value">Mentoria individual</div></div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img src="capa-farma.png" alt="Mentoria Gestão de Pessoas. Mentoria individual para Maria. Inetris — saúde é o nosso propósito. Pessoas fortes constroem resultados juntas.">
       </div>
     </div>
   </section>
